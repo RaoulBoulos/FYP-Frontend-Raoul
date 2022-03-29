@@ -1,5 +1,5 @@
-export async function getData() {
-	const promiseData = fetch("http://localhost:5000/read/amzn", {
+export async function getData(ticker) {
+	const promiseData = fetch(`http://localhost:5000/read/${ticker}`, {
 		crossDomain: true,
 		method: 'GET',
 		headers: {'Content-Type':'application/json'},

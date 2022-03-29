@@ -63,7 +63,7 @@ const mouseEdgeAppearance = {
 
 class CandleStickChartWithMACDIndicator extends React.Component {
 	render() {
-		const { type, data: initialData, width, ratio } = this.props;
+		const { type, data: initialData, width, ratio, ticker } = this.props;
 		const ema26 = ema()
 			.options({
 				windowSize: 26,
@@ -128,15 +128,15 @@ class CandleStickChartWithMACDIndicator extends React.Component {
 				ratio={ratio}
 				margin={{ left: 70, right: 70, top: 20, bottom: 30 }}
 				type={type}
-				seriesName="AMZN"
+				seriesName={ticker.toUpperCase()}
 				data={data}
 				xScale={xScale}
 				xAccessor={xAccessor}
 				//xExtents={[new Date(2018,0,1), new Date(2022,0,1)]}
 				displayXAccessor={displayXAccessor}
 			>
-				<Label x={(width - 70 - 70) / 2} y={30}
-					fontSize="30" fill="#FFFFFF" text="Amazon" />
+				<Label x={(width - 70 - 70) / 2} y={35}
+					fontSize={30} fill="#FFFFFF" text={ticker.toUpperCase()} />
 				<Chart id={1} height={400}
 					yExtents={[d => [d.high, d.low], ema26.accessor(), ema12.accessor(), bb.accessor()]}
 					padding={{ top: 10, bottom: 20 }}
